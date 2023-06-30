@@ -16,3 +16,6 @@ dependencyResolutionManagement {
 rootProject.name = "Eurosport Technical Test"
 include(":app")
 include(":ui")
+include(":feed")
+include(":video")
+include(":story")
