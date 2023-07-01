@@ -3,8 +3,8 @@ package com.mikaelarmonia.story.data.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.mikaelarmonia.core.data.db.converters.LocalDateTimeConverter
 import com.mikaelarmonia.core.data.db.entities.SportEntity
-import com.mikaelarmonia.story.data.db.converters.LocalDateTimeConverter
 import com.mikaelarmonia.story.data.db.dao.StoryDao
 import com.mikaelarmonia.story.data.db.entities.StoryEntity
 

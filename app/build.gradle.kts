@@ -54,6 +54,7 @@ dependencies {
 
     implementation(project(":ui"))
     implementation(project(":story"))
+    implementation(project(":video"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

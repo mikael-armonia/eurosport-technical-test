@@ -1,4 +1,4 @@
-package com.mikaelarmonia.story.data.db.converters
+package com.mikaelarmonia.core.data.db.converters
 
 import androidx.room.TypeConverter
 import java.time.Instant
