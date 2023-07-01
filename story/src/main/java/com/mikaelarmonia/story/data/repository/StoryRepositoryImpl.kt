@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
-class StoryRepositoryImpl(
+internal class StoryRepositoryImpl(
     private val localDataSource: StoryLocalDataSource,
     override val coroutineContext: CoroutineContext = Dispatchers.IO
 ) : StoryRepository, CoroutineScope{

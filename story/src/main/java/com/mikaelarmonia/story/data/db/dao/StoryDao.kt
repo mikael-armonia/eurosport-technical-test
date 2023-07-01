@@ -7,10 +7,10 @@ import com.mikaelarmonia.story.data.db.entities.StoryEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface StoryDao {
+internal interface StoryDao {
     @Query("SELECT * FROM StoryEntity")
     fun streamAll(): Flow<List<StoryEntity>>
 
     @Insert
-    suspend fun insertAll(vararg stories: StoryEntity): Boolean
+    suspend fun insertAll(vararg stories: StoryEntity)
 }

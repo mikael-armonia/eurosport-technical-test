@@ -8,7 +8,7 @@ import com.mikaelarmonia.story.data.model.toStoryEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class StoryLocalDataSource(
+internal class StoryLocalDataSource(
     private val storyDao: StoryDao,
 ) : DataSource<Story> {
 
