@@ -2,11 +2,10 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.mikaelarmonia.story"
+    namespace = "com.mikaelarmonia.core"
     compileSdk = 33
 
     defaultConfig {
@@ -35,16 +34,8 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":core"))
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
-    implementation(libs.material)
     implementation(libs.room.runtime)
-    ksp(libs.room.compiler)
-    testImplementation(libs.room.testing)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    annotationProcessor(libs.room.compiler)
 }
