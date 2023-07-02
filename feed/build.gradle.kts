@@ -33,6 +33,12 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.7"
+    }
 }
 
 dependencies {
@@ -40,10 +46,18 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":story"))
     implementation(project(":video"))
+    implementation(project(":ui"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.constraintlayout)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.material3)
+    implementation(libs.coil)
     implementation(libs.koin)
     implementation(libs.koin.compose)
     implementation(libs.retrofit)
@@ -52,4 +66,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    coreLibraryDesugaring(libs.tools.desugar)
 }

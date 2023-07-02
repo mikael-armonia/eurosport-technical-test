@@ -8,7 +8,7 @@ import com.mikaelarmonia.core.data.db.entities.SportEntity
 import com.mikaelarmonia.story.data.db.dao.StoryDao
 import com.mikaelarmonia.story.data.db.entities.StoryEntity
 
-@Database(entities = [StoryEntity::class, SportEntity::class], version = 1)
+@Database(entities = [StoryEntity::class, SportEntity::class], version = 2)
 @TypeConverters(LocalDateTimeConverter::class)
 internal abstract class StoryDatabase : RoomDatabase() {
     abstract fun storyDao(): StoryDao

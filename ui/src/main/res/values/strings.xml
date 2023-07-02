@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ago">%1s ago</string>
+    <string name="min">%1d min</string>
+    <string name="hours">%1d hours</string>
+    <string name="days">%1d days</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">Loading</string>
+    <string name="error">Uh oh! It seems like there was an issue while retrieving the data 😥\nPlease check your internet connection and try again!</string>
+    <string name="image_content_description">Article\'s image</string>
+    <string name="top_bar_title">Featured</string>
+</resources>

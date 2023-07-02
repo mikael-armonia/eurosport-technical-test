@@ -6,6 +6,9 @@ import com.mikaelarmonia.feed.data.repository.FeedRepositoryImpl
 import com.mikaelarmonia.feed.domain.FetchFeedData
 import com.mikaelarmonia.feed.domain.StreamFeed
 import com.mikaelarmonia.feed.domain.repository.FeedRepository
+import com.mikaelarmonia.feed.ui.FeedViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -23,6 +26,8 @@ val feedModule = module {
     factory<FeedService> { get<Retrofit>(named("feed api")).create(FeedService::class.java) }
     factoryOf(::FetchFeedData)
     factoryOf(::StreamFeed)
+
+    viewModelOf(::FeedViewModel)
 
     single<FeedRepository> {
         FeedRepositoryImpl(

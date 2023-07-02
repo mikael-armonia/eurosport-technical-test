@@ -7,6 +7,7 @@ data class StoryDto(
     override val id: Long,
     override val title: String,
     val teaser: String,
+    val image: String,
     val author: String,
     override val date: Double,
     override val sport: SportDto

@@ -20,7 +20,7 @@ val storyModule = module {
             androidContext(),
             StoryDatabase::class.java,
             "story-database"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
     factory<StoryDao> { get<StoryDatabase>().storyDao() }
 

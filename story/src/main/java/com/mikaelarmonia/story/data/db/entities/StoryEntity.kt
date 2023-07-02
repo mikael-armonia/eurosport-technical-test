@@ -12,6 +12,7 @@ internal data class StoryEntity(
     @PrimaryKey override val id: Long,
     override val title: String,
     val teaser: String,
+    val image: String,
     val author: String,
     override val date: LocalDateTime,
     @Embedded("sport_") override val sport: SportEntity,

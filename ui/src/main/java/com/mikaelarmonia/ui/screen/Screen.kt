@@ -5,11 +5,13 @@ import androidx.navigation.NamedNavArgument
 
 private val TAG = Screen::class.simpleName
 
-abstract class Screen {
+abstract class Screen(
+    private val params: List<Any> = emptyList()
+) {
     abstract val baseRoute: String
     abstract val navArgs: List<NamedNavArgument>
 
-    fun destination(vararg params: Any): String {
+    fun destination(): String {
         return when (params.size) {
             navArgs.size -> {
                 navArgs.foldIndexed(baseRoute) { i, destination, arg ->
