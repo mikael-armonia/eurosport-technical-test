@@ -18,6 +18,7 @@ internal class VideoLocalDataSource(
 
     override suspend fun storeData(data: List<Video>): Result<Unit> = Result.runCatching {
         val videos = data.map { it.toVideoEntity() }.toTypedArray()
+        videoDao.deleteAll()
         videoDao.insertAll(*videos)
     }
 }

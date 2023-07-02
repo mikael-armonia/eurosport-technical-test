@@ -18,6 +18,7 @@ internal class StoryLocalDataSource(
 
     override suspend fun storeData(data: List<Story>): Result<Unit> = Result.runCatching {
         val stories = data.map { it.toStoryEntity() }.toTypedArray()
+        storyDao.deleteAll()
         storyDao.insertAll(*stories)
     }
 }

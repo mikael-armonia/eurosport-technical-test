@@ -1,5 +1,6 @@
 package com.mikaelarmonia.video.data.repository
 
+import com.mikaelarmonia.core.data.datasource.DataSource
 import com.mikaelarmonia.video.domain.repository.VideoRepository
 import com.mikaelarmonia.video.data.datasource.VideoLocalDataSource
 import com.mikaelarmonia.video.data.model.Video
@@ -10,7 +11,7 @@ import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
 internal class VideoRepositoryImpl(
-    private val localDataSource: VideoLocalDataSource,
+    private val localDataSource: DataSource<Video>,
     override val coroutineContext: CoroutineContext = Dispatchers.IO
 ) : VideoRepository, CoroutineScope{
     override fun streamVideos(): Flow<List<Video>> = localDataSource.streamData()

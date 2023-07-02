@@ -13,4 +13,7 @@ internal interface StoryDao {
 
     @Insert
     suspend fun insertAll(vararg stories: StoryEntity)
+
+    @Query("DELETE FROM StoryEntity")
+    suspend fun deleteAll()
 }

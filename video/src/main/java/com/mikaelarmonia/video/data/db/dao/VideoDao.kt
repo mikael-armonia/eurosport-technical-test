@@ -1,6 +1,7 @@
 package com.mikaelarmonia.video.data.db.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.mikaelarmonia.video.data.db.entities.VideoEntity
@@ -13,4 +14,7 @@ internal interface VideoDao {
 
     @Insert
     suspend fun insertAll(vararg videos: VideoEntity)
+
+    @Query("DELETE FROM VideoEntity")
+    suspend fun deleteAll()
 }

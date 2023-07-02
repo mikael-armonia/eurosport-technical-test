@@ -55,6 +55,7 @@ dependencies {
     implementation(project(":ui"))
     implementation(project(":story"))
     implementation(project(":video"))
+    implementation(project(":feed"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
@@ -70,6 +71,7 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.koin)
     implementation(libs.koin.compose)
+    implementation(libs.retrofit.networkresponseadapter) // TODO remove
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

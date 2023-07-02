@@ -1,7 +1,9 @@
 package com.mikaelarmonia.video.data.model
 
+import com.mikaelarmonia.core.data.model.toLocalDateTime
 import com.mikaelarmonia.core.data.model.toSport
 import com.mikaelarmonia.core.data.model.toSportEntity
+import com.mikaelarmonia.video.data.api.model.VideoDto
 import com.mikaelarmonia.video.data.db.entities.VideoEntity
 
 internal fun Video.toVideoEntity() = VideoEntity(
@@ -21,5 +23,15 @@ internal fun VideoEntity.toVideo() = Video(
     url = url,
     views = views,
     date = date,
+    sport = sport.toSport(),
+)
+
+fun VideoDto.toVideo() = Video(
+    id = id,
+    title = title,
+    thumb = thumb,
+    url = url,
+    views = views,
+    date = date.toLocalDateTime(),
     sport = sport.toSport(),
 )
