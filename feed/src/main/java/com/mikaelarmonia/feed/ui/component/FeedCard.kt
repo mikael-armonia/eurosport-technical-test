@@ -18,6 +18,7 @@ import com.mikaelarmonia.core.data.model.Article
 import com.mikaelarmonia.story.data.model.Story
 import com.mikaelarmonia.story.ui.model.storyDescription
 import com.mikaelarmonia.video.data.model.Video
+import com.mikaelarmonia.video.ui.ThumbDecoration
 import com.mikaelarmonia.video.ui.videoDescription
 
 @Composable
@@ -27,6 +28,7 @@ fun FeedCard(
 ) {
     var description = ""
     var imageUrl = ""
+    var imageDecoration: @Composable () -> Unit = {}
     when (article) {
         is Story -> {
             description = article.storyDescription()
@@ -35,6 +37,7 @@ fun FeedCard(
         is Video -> {
             description = article.videoDescription()
             imageUrl = article.thumb
+            imageDecoration = { article.ThumbDecoration() }
         }
     }
 
@@ -45,7 +48,8 @@ fun FeedCard(
         imageUrl = imageUrl,
         tag = article.sport.name,
         title = article.title,
-        description = description
+        description = description,
+        imageDecoration = imageDecoration
     )
 }
 
@@ -55,7 +59,8 @@ private fun FeedCardContent(
     imageUrl: String,
     tag: String,
     title: String,
-    description: String
+    description: String,
+    imageDecoration: @Composable () -> Unit = {},
 ) {
     Card(
         modifier = modifier,
@@ -71,6 +76,7 @@ private fun FeedCardContent(
                     .height(240.dp)
                     .layoutId("image"),
                 imageUrl = imageUrl,
+                imageDecoration = imageDecoration,
             )
             FeedCardTag(
                 modifier = Modifier

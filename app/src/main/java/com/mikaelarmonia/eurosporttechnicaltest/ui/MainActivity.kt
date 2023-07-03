@@ -4,14 +4,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.mikaelarmonia.feed.ui.screen.FeedScreen
 import com.mikaelarmonia.ui.theme.EurosportTechnicalTestTheme
+import com.mikaelarmonia.ui.toolbar.TopBar
+import com.mikaelarmonia.ui.toolbar.TopBarState
 import org.koin.android.ext.android.get
 
 class MainActivity : ComponentActivity() {
@@ -19,21 +28,41 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             EurosportTechnicalTestTheme {
-                Surface(
+                var topBarState by remember { mutableStateOf(TopBarState()) }
+                val topBarConfigurator: @Composable (TopBarState) -> Unit = { newConfiguration ->
+                    topBarState = newConfiguration
+                }
+
+                Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.surfaceVariant
-                ) {
-                    val navController = rememberNavController()
-                    NavHost(
-                        navController = navController,
-                        startDestination = FeedScreen.baseRoute
-                    ) {
-                        eurosportTTNavGraph(
-                            modifier = Modifier.fillMaxSize(),
-                            navController = navController,
-                            destinationRepository = get(),
-                            coroutineScope = lifecycleScope
+                    topBar = {
+                        TopBar(
+                            title = topBarState.title,
+                            backgroundColor = topBarState.backgroundColor,
+                            isBackEnabled = topBarState.isBackEnabled,
+                            actions = topBarState.actions,
                         )
+                    }
+                ) {
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colorScheme.surfaceVariant
+                    ) {
+                        val navController = rememberNavController()
+                        NavHost(
+                            navController = navController,
+                            startDestination = FeedScreen.baseRoute
+                        ) {
+                            eurosportTTNavGraph(
+                                modifier = Modifier
+                                    .padding(it)
+                                    .fillMaxSize(),
+                                navController = navController,
+                                destinationRepository = get(),
+                                topBarConfigurator = topBarConfigurator,
+                                coroutineScope = lifecycleScope
+                            )
+                        }
                     }
                 }
             }

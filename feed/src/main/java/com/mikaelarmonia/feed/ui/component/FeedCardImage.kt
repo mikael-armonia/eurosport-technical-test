@@ -18,32 +18,40 @@ import com.mikaelarmonia.feed.R
 @Composable
 fun FeedCardImage(
     modifier: Modifier,
-    imageUrl: String
+    imageUrl: String,
+    imageDecoration: @Composable () -> Unit = {}
 ) {
-    SubcomposeAsyncImage(
+    Box(
         modifier = modifier,
-        model = imageUrl,
-        contentDescription = stringResource(id = R.string.image_content_description),
-        contentScale = ContentScale.Crop,
-        loading = {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator()
+        contentAlignment = Alignment.Center
+    ) {
+        SubcomposeAsyncImage(
+            modifier = Modifier.fillMaxSize(),
+            model = imageUrl,
+            contentDescription = stringResource(id = R.string.image_content_description),
+            contentScale = ContentScale.Crop,
+            loading = {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
+            },
+            error = {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        modifier = Modifier.size(48.dp),
+                        painter = painterResource(id = android.R.drawable.ic_menu_gallery),
+                        contentDescription = "Error" // TODO put in strings.xml
+                    )
+                }
             }
-        },
-        error = {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    modifier = Modifier.size(48.dp),
-                    painter = painterResource(id = android.R.drawable.ic_menu_gallery),
-                    contentDescription = "Error" // TODO put in strings.xml
-                )
-            }
-        }
-    )
+        )
+        imageDecoration()
+    }
+
 }

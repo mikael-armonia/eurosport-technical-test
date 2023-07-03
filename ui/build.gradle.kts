@@ -54,5 +54,6 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.navigation)
     implementation(libs.koin)
+    implementation(libs.koin.compose)
     implementation(kotlin("reflect"))
 }

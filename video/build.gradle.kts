@@ -43,10 +43,16 @@ android {
 dependencies {
 
     implementation(project(":core"))
+    implementation(project(":ui"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.material3)
     implementation(libs.koin)
     implementation(libs.koin.compose)
     implementation(libs.room.runtime)

@@ -1,5 +1,6 @@
 package com.mikaelarmonia.ui.screen.repository
 
+import com.mikaelarmonia.ui.screen.PopBack
 import com.mikaelarmonia.ui.screen.Screen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,5 +18,9 @@ class ScreenRepository(
 
     override fun navigateToScreen(screen: Screen) {
         launch { screenStream.emit(screen) }
+    }
+
+    override fun popBack() {
+        launch { screenStream.emit(PopBack) }
     }
 }
