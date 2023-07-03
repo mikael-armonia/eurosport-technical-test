@@ -10,6 +10,8 @@ import com.mikaelarmonia.feed.ui.screen.FeedScreen
 import com.mikaelarmonia.story.ui.StoryComponent
 import com.mikaelarmonia.story.ui.screen.StoryScreen
 import com.mikaelarmonia.ui.toolbar.TopBarState
+import com.mikaelarmonia.video.ui.VideoComponent
+import com.mikaelarmonia.video.ui.screen.VideoScreen
 
 internal fun NavGraphBuilder.eurosportTTNavGraph(
     modifier: Modifier = Modifier,
@@ -29,6 +31,16 @@ internal fun NavGraphBuilder.eurosportTTNavGraph(
                 modifier = modifier,
                 storyId = it,
                 topBarConfigurator = topBarConfigurator
+            )
+        }
+    }
+    composable(VideoScreen.baseRoute) { navBackStackEntry ->
+        val videoId = navBackStackEntry.arguments?.getString("videoId")?.toLong()
+        videoId?.let {
+            VideoComponent(
+                modifier = modifier,
+                videoId = it,
+                topBarConfigurator = topBarConfigurator,
             )
         }
     }

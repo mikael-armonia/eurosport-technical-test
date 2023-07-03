@@ -24,9 +24,9 @@ import java.time.LocalDateTime
 fun StoryComponent(
     modifier: Modifier = Modifier,
     storyId: Long,
-    viewModel: StoryViewModel = koinViewModel(parameters = { parametersOf(storyId) }),
     topBarConfigurator: @Composable (TopBarState) -> Unit
 ) {
+    val viewModel: StoryViewModel = koinViewModel(parameters = { parametersOf(storyId) })
     val state: State by viewModel.viewStateFlow.collectAsState()
     val shareButton: @Composable (RowScope) -> Unit = {
         ShareActionButton()

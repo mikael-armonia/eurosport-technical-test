@@ -1,12 +1,15 @@
 package com.mikaelarmonia.feed.di
 
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
+import com.mikaelarmonia.core.data.datasource.DataSource
 import com.mikaelarmonia.feed.data.api.FeedService
 import com.mikaelarmonia.feed.data.repository.FeedRepositoryImpl
 import com.mikaelarmonia.feed.domain.FetchFeedData
 import com.mikaelarmonia.feed.domain.StreamFeed
 import com.mikaelarmonia.feed.domain.repository.FeedRepository
 import com.mikaelarmonia.feed.ui.FeedViewModel
+import com.mikaelarmonia.story.data.model.Story
+import com.mikaelarmonia.video.data.model.Video
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.factoryOf
@@ -32,8 +35,8 @@ val feedModule = module {
     single<FeedRepository> {
         FeedRepositoryImpl(
             feedService = get(),
-            storyDataSource = get(named("story datasource")),
-            videoDataSource = get(named("video datasource")),
+            storyDataSource = get<DataSource<Story>>(named("story datasource")),
+            videoDataSource = get<DataSource<Video>>(named("video datasource")),
         )
     }
 }

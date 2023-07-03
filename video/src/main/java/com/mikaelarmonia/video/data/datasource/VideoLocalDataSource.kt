@@ -12,6 +12,8 @@ internal class VideoLocalDataSource(
     private val videoDao: VideoDao,
 ) : DataSource<Video> {
 
+    suspend fun get(videoId: Long): Video = videoDao.get(videoId).toVideo()
+
     override fun streamData(): Flow<List<Video>> = videoDao.streamAll().map { entities ->
         entities.map { it.toVideo() }
     }

@@ -9,6 +9,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 internal interface VideoDao {
+    @Query("SELECT * FROM VideoEntity WHERE id == :id")
+    suspend fun get(id: Long): VideoEntity
+
     @Query("SELECT * FROM VideoEntity")
     fun streamAll(): Flow<List<VideoEntity>>
 

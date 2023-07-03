@@ -22,6 +22,7 @@ import com.mikaelarmonia.story.ui.screen.StoryScreen
 import com.mikaelarmonia.ui.screen.repository.NavigatorRepository
 import com.mikaelarmonia.video.data.model.Video
 import com.mikaelarmonia.video.ui.ThumbDecoration
+import com.mikaelarmonia.video.ui.screen.VideoScreen
 import com.mikaelarmonia.video.ui.videoDescription
 import org.koin.androidx.compose.get
 
@@ -44,8 +45,8 @@ fun FeedCard(
         is Video -> {
             description = article.videoDescription()
             imageUrl = article.thumb
-            imageDecoration = { article.ThumbDecoration() }
-            // TODO Video onClick
+            imageDecoration = { ThumbDecoration() }
+            onClick = { navigator.navigateToScreen(VideoScreen(article.id)) }
         }
     }
 

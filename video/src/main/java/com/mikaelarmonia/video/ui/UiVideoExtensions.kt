@@ -14,7 +14,7 @@ import com.mikaelarmonia.video.data.model.Video
 fun Video.videoDescription(): String = stringResource(R.string.views, views)
 
 @Composable
-fun Video.ThumbDecoration() {
+fun ThumbDecoration() {
     Image(
         modifier = Modifier.size(48.dp),
         painter = painterResource(id = com.mikaelarmonia.ui.R.drawable.play),

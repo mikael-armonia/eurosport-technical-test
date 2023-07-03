@@ -11,6 +11,7 @@ appcompat = "1.6.1"
 material = "1.9.0"
 constraintlayout = "1.0.1"
 coil = "2.4.0"
+media3 = "1.0.0-rc01"
 lifecycle-runtime-ktx = "2.6.1"
 activity-compose = "1.7.2"
 compose-bom = "2023.06.01"
@@ -40,6 +41,8 @@ ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref="coil" }
+media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref="media3" }
+media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref="media3" }
 navigation = { group = "androidx.navigation", name = "navigation-common-ktx", version.ref = "navigation" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
