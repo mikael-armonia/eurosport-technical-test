@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="description">By %1s - %2s</string>
+    <string name="description_short">By </string>
+    <string name="story_image_content_description">Story image</string>
 </resources>

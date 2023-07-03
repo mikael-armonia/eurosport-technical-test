@@ -28,7 +28,7 @@ fun FeedCardText(
         Text(
             modifier = Modifier.padding(top = 2.dp),
             text = description,
-            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.titleSmall,
             color = Color.Gray
         )
     }

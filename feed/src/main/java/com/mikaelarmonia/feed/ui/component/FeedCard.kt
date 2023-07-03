@@ -1,5 +1,6 @@
 package com.mikaelarmonia.feed.ui.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,34 +18,42 @@ import androidx.constraintlayout.compose.ConstraintSet
 import com.mikaelarmonia.core.data.model.Article
 import com.mikaelarmonia.story.data.model.Story
 import com.mikaelarmonia.story.ui.model.storyDescription
+import com.mikaelarmonia.story.ui.screen.StoryScreen
+import com.mikaelarmonia.ui.screen.repository.NavigatorRepository
 import com.mikaelarmonia.video.data.model.Video
 import com.mikaelarmonia.video.ui.ThumbDecoration
 import com.mikaelarmonia.video.ui.videoDescription
+import org.koin.androidx.compose.get
 
 @Composable
 fun FeedCard(
     modifier: Modifier = Modifier,
     article: Article,
 ) {
+    val navigator: NavigatorRepository = get()
     var description = ""
     var imageUrl = ""
     var imageDecoration: @Composable () -> Unit = {}
+    var onClick: () -> Unit = {}
     when (article) {
         is Story -> {
             description = article.storyDescription()
             imageUrl = article.image
+            onClick = { navigator.navigateToScreen(StoryScreen(article.id)) }
         }
         is Video -> {
             description = article.videoDescription()
             imageUrl = article.thumb
             imageDecoration = { article.ThumbDecoration() }
+            // TODO Video onClick
         }
     }
 
     FeedCardContent(
         modifier = modifier
             .wrapContentHeight()
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
         imageUrl = imageUrl,
         tag = article.sport.name,
         title = article.title,

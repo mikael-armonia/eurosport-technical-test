@@ -8,6 +8,10 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 internal interface StoryDao {
+
+    @Query("SELECT * FROM StoryEntity WHERE id == :id")
+    suspend fun get(id: Long): StoryEntity
+
     @Query("SELECT * FROM StoryEntity")
     fun streamAll(): Flow<List<StoryEntity>>
 

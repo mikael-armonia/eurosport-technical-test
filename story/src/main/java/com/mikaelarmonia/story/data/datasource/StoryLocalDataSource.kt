@@ -12,6 +12,8 @@ internal class StoryLocalDataSource(
     private val storyDao: StoryDao,
 ) : DataSource<Story> {
 
+    suspend fun getData(id: Long) = storyDao.get(id)
+
     override fun streamData(): Flow<List<Story>> = storyDao.streamAll().map { entities ->
         entities.map { it.toStory() }
     }

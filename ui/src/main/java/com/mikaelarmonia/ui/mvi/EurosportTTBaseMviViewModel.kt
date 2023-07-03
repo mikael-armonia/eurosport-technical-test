@@ -17,7 +17,7 @@ abstract class EurosportTTBaseMviViewModel<ST, I>(
     private val _viewStateFlow = MutableStateFlow(viewState)
     val viewStateFlow: StateFlow<ST> = _viewStateFlow
 
-    abstract fun dispatchIntent(intent: I)
+    open fun dispatchIntent(intent: I) {}
 
     inline fun <reified T : ST> updateViewState(newStateProvider: T.() -> T) {
         val state = viewState
