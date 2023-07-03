@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.ksp)
+    `java-test-fixtures`
 }
 
 android {
@@ -38,6 +39,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.7"
     }
+    testFixtures {
+        enable = true
+    }
 }
 
 dependencies {
@@ -62,6 +66,10 @@ dependencies {
     ksp(libs.room.compiler)
     testImplementation(libs.room.testing)
     testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(testFixtures(project(":core")))
+    testImplementation(testFixtures(project(":story")))
+    testFixturesImplementation(project(":core"))
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }

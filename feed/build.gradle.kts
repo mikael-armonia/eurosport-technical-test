@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    `java-test-fixtures`
 }
 
 android {
@@ -39,6 +40,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.7"
     }
+    testFixtures {
+        enable = true
+    }
 }
 
 dependencies {
@@ -64,6 +68,14 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.retrofit.networkresponseadapter)
     testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.coroutines.test)
+    testImplementation(testFixtures(project(":feed")))
+    testImplementation(testFixtures(project(":story")))
+    testImplementation(testFixtures(project(":video")))
+    testFixturesImplementation(testFixtures(project(":story")))
+    testFixturesImplementation(testFixtures(project(":video")))
+    androidTestImplementation(libs.mockk.android)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     coreLibraryDesugaring(libs.tools.desugar)
