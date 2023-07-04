@@ -10,7 +10,7 @@ import com.mikaelarmonia.ui.screen.repository.NavigatorRepository
 import com.mikaelarmonia.video.ui.screen.VideoScreen
 import kotlinx.coroutines.launch
 
-internal val stateInitializer: () -> State = { State.Loading }
+private val stateInitializer: () -> State = { State.Loading }
 
 class FeedViewModel(
     fetchFeedData: FetchFeedData,
