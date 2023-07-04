@@ -1,8 +1,7 @@
-package com.mikaelarmonia.video
+package com.mikaelarmonia.video.data.datasource
 
 import com.mikaelarmonia.video.VideoData.video1
 import com.mikaelarmonia.video.VideoEntityData.videoEntity1
-import com.mikaelarmonia.video.data.datasource.VideoLocalDataSource
 import com.mikaelarmonia.video.data.db.dao.VideoDao
 import io.mockk.coEvery
 import io.mockk.coVerify
