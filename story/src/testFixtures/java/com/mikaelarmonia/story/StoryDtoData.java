@@ -10,7 +10,7 @@ public class StoryDtoData {
             new StoryDto(
                     123,
                     "Title",
-                    "Tease",
+                    "Teaser",
                     "https://image.image",
                     "Author",
                     12345678,

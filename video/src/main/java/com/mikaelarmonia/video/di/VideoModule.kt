@@ -7,7 +7,7 @@ import com.mikaelarmonia.video.data.db.VideoDatabase
 import com.mikaelarmonia.video.data.db.dao.VideoDao
 import com.mikaelarmonia.video.data.model.Video
 import com.mikaelarmonia.video.data.repository.VideoRepositoryImpl
-import com.mikaelarmonia.video.domain.repository.GetVideo
+import com.mikaelarmonia.video.domain.GetVideo
 import com.mikaelarmonia.video.domain.repository.VideoRepository
 import com.mikaelarmonia.video.ui.VideoViewModel
 import org.koin.android.ext.koin.androidContext

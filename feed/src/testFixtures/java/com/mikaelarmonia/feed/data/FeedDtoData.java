@@ -1,4 +1,4 @@
-package com.mikaelarmonia.feed.data.repository;
+package com.mikaelarmonia.feed.data;
 
 import com.mikaelarmonia.feed.data.api.model.FeedDto;
 import com.mikaelarmonia.story.StoryDtoData;

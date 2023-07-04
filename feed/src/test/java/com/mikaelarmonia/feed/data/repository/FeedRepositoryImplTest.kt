@@ -2,9 +2,9 @@ package com.mikaelarmonia.feed.data.repository
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.mikaelarmonia.core.data.datasource.DataSource
+import com.mikaelarmonia.feed.data.FeedDtoData.feedDto
 import com.mikaelarmonia.feed.data.api.FeedService
 import com.mikaelarmonia.feed.data.api.model.FeedDto
-import com.mikaelarmonia.feed.data.repository.FeedDtoData.feedDto
 import com.mikaelarmonia.story.StoryDtoData.storyDtos
 import com.mikaelarmonia.story.data.model.Story
 import com.mikaelarmonia.story.data.model.toStory

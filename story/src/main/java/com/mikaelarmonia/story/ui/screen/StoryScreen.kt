@@ -5,7 +5,9 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.mikaelarmonia.ui.screen.Screen
 
-class StoryScreen(id: Long) : Screen(params = listOf(id)) {
+data class StoryScreen(
+    val id: Long
+) : Screen(params = listOf(id)) {
     override val baseRoute: String = Companion.baseRoute
     override val navArgs: List<NamedNavArgument> = Companion.navArgs
 

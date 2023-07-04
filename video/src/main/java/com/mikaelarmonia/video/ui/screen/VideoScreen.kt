@@ -5,7 +5,9 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.mikaelarmonia.ui.screen.Screen
 
-class VideoScreen(videoId: Long) : Screen(params = listOf(videoId)) {
+data class VideoScreen(
+    val videoId: Long
+) : Screen(params = listOf(videoId)) {
     override val baseRoute: String = Companion.baseRoute
     override val navArgs: List<NamedNavArgument> = Companion.navArgs
 

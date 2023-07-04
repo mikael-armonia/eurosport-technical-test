@@ -2,7 +2,7 @@ package com.mikaelarmonia.video.ui
 
 import androidx.lifecycle.viewModelScope
 import com.mikaelarmonia.ui.mvi.EurosportTTBaseMviViewModel
-import com.mikaelarmonia.video.domain.repository.GetVideo
+import com.mikaelarmonia.video.domain.GetVideo
 import kotlinx.coroutines.launch
 
 private val stateInitializer: () -> State = { State() }

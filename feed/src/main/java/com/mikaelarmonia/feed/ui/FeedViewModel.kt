@@ -10,11 +10,11 @@ import com.mikaelarmonia.ui.screen.repository.NavigatorRepository
 import com.mikaelarmonia.video.ui.screen.VideoScreen
 import kotlinx.coroutines.launch
 
-private val stateInitializer: () -> State = { State.Loading }
+internal val stateInitializer: () -> State = { State.Loading }
 
 class FeedViewModel(
-    private val fetchFeedData: FetchFeedData,
-    private val streamFeed: StreamFeed,
+    fetchFeedData: FetchFeedData,
+    streamFeed: StreamFeed,
     private val navigator: NavigatorRepository
 ) : EurosportTTBaseMviViewModel<State, Intent>(stateInitializer) {
 
