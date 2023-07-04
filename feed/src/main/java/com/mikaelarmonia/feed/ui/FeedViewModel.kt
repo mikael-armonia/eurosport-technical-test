@@ -4,7 +4,10 @@ import androidx.lifecycle.viewModelScope
 import com.mikaelarmonia.core.data.model.Article
 import com.mikaelarmonia.feed.domain.FetchFeedData
 import com.mikaelarmonia.feed.domain.StreamFeed
+import com.mikaelarmonia.story.ui.screen.StoryScreen
 import com.mikaelarmonia.ui.mvi.EurosportTTBaseMviViewModel
+import com.mikaelarmonia.ui.screen.repository.NavigatorRepository
+import com.mikaelarmonia.video.ui.screen.VideoScreen
 import kotlinx.coroutines.launch
 
 private val stateInitializer: () -> State = { State.Loading }
@@ -12,6 +15,7 @@ private val stateInitializer: () -> State = { State.Loading }
 class FeedViewModel(
     private val fetchFeedData: FetchFeedData,
     private val streamFeed: StreamFeed,
+    private val navigator: NavigatorRepository
 ) : EurosportTTBaseMviViewModel<State, Intent>(stateInitializer) {
 
     init {
@@ -28,7 +32,14 @@ class FeedViewModel(
     }
 
     override fun dispatchIntent(intent: Intent) {
-        TODO("Not yet implemented")
+        when (intent) {
+            is Intent.GoToStory -> navigator.navigateToScreen(
+                StoryScreen(intent.storyId)
+            )
+            is Intent.GoToVideo -> navigator.navigateToScreen(
+                VideoScreen(intent.videoId)
+            )
+        }
     }
 }
 
@@ -39,4 +50,11 @@ sealed class State {
     ) : State()
 }
 
-sealed class Intent
+sealed class Intent {
+    data class GoToStory(
+        val storyId: Long
+    ) : Intent()
+    data class GoToVideo(
+        val videoId: Long
+    ) : Intent()
+}

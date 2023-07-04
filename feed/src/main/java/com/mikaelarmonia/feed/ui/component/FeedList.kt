@@ -8,11 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.mikaelarmonia.core.data.model.Article
+import com.mikaelarmonia.feed.ui.Intent
 
 @Composable
 fun FeedList(
     modifier: Modifier = Modifier,
-    feed: List<Article>
+    feed: List<Article>,
+    onItemClick: (Article) -> Unit,
 ) {
     LazyColumn(
         modifier = modifier,
@@ -21,7 +23,8 @@ fun FeedList(
         items(feed) { article ->
             FeedCard(
                 modifier = Modifier.padding(bottom = 16.dp),
-                article = article
+                article = article,
+                onItemClick = onItemClick
             )
         }
     }
