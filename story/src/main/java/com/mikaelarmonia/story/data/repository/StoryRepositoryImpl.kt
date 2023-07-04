@@ -14,7 +14,7 @@ internal class StoryRepositoryImpl(
     private val localDataSource: StoryLocalDataSource,
     override val coroutineContext: CoroutineContext = Dispatchers.IO
 ) : StoryRepository, CoroutineScope{
-    override suspend fun getStory(storyId: Long): Story = localDataSource.getData(storyId).toStory()
+    override suspend fun getStory(storyId: Long): Story = localDataSource.getData(storyId)
 
     override fun streamStories(): Flow<List<Story>> = localDataSource.streamData()
 

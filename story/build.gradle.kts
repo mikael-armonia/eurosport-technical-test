@@ -69,6 +69,7 @@ dependencies {
     testImplementation(libs.room.testing)
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
+    testImplementation(libs.coroutines.test)
     testFixturesImplementation(project(":core"))
     testImplementation(testFixtures(project(":story")))
     androidTestImplementation(libs.androidx.test.ext.junit)
